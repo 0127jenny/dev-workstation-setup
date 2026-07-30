@@ -298,5 +298,26 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED          STATU
 \`\`\`
 <img width="2560" height="1440" alt="스크린샷 2026-07-30 오후 4 46 57" src="https://github.com/user-attachments/assets/4e4d75af-5e4e-46b5-9a5c-82f58633b1a7" />
 
-## 포트 매핑 접속 증거 (요구사항 8)
-(브라우저 스크린샷 첨부 - http://localhost:8080 주소창 보이게, 그리고 화면에 "Hello from my custom NGINX container!" 나온 것 확인)
+## Docker 볼륨 영속성 검증
+
+\`\`\`
+$ docker volume create mydata
+mydata
+
+$ docker run -d -v mydata:/data --name volume-test ubuntu sleep 1000
+ce92a2434047
+
+$ docker exec volume-test sh -c "echo 'persisted data' > /data/test.txt"
+
+$ docker exec volume-test cat /data/test.txt
+persisted data
+
+$ docker rm -f volume-test
+volume-test
+
+$ docker run --rm -v mydata:/data ubuntu cat /data/test.txt
+persisted data
+\`\`\`
+
+### 결론
+`volume-test` 컨테이너를 완전히 삭제(`docker rm -f`)한 후에도, 같은 볼륨(`mydata`)을 연결한 새 컨테이너에서 파일을 읽을 수 있었음. 이는 데이터가 컨테이너가 아니라 볼륨에 저장되어, 컨테이너 삭제와 무관하게 유지됨을 증명함.

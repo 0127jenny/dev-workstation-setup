@@ -13,12 +13,43 @@
 아래 명령어로 디렉토리/파일 생성, 복사, 이동, 삭제를 수행함.
 
 \`\`\`
-$ pwd
-/Users/xxx/dev-workstation-mission
-$ ls -al
-(여기에 실제 출력 붙여넣기)
-$ mkdir practice
-$ cd practice
-$ touch test.txt
-...
-\`\`\`
+c0127jenny8859@c3r3s7 dev-workstation-mission % pwd
+/Users/c0127jenny8859/Desktop/dev-workstation-mission
+c0127jenny8859@c3r3s7 dev-workstation-mission % ls -al
+total 0
+drwxr-xr-x  2 c0127jenny8859  c0127jenny8859   64 Jul 30 15:19 .
+drwx------+ 6 c0127jenny8859  c0127jenny8859  192 Jul 30 15:19 ..
+c0127jenny8859@c3r3s7 dev-workstation-mission % mkdir practice
+c0127jenny8859@c3r3s7 dev-workstation-mission % cd practice
+c0127jenny8859@c3r3s7 practice % cd ~/Desktop
+c0127jenny8859@c3r3s7 Desktop % cd ~/Desktop
+c0127jenny8859@c3r3s7 Desktop % mkdir dev-workstation-mission
+mkdir: dev-workstation-mission: File exists
+c0127jenny8859@c3r3s7 Desktop % mkdir dev-workstation-mission
+c0127jenny8859@c3r3s7 Desktop % cd dev-workstation-mission
+c0127jenny8859@c3r3s7 dev-workstation-mission % pwd
+/Users/c0127jenny8859/Desktop/dev-workstation-mission
+c0127jenny8859@c3r3s7 dev-workstation-mission % pwd
+/Users/c0127jenny8859/Desktop/dev-workstation-mission
+c0127jenny8859@c3r3s7 dev-workstation-mission % ls -al
+total 0
+drwxr-xr-x  2 c0127jenny8859  c0127jenny8859   64 Jul 30 15:25 .
+drwx------+ 5 c0127jenny8859  c0127jenny8859  160 Jul 30 15:25 ..
+c0127jenny8859@c3r3s7 dev-workstation-mission % mkdir practice
+c0127jenny8859@c3r3s7 dev-workstation-mission % cd practice
+c0127jenny8859@c3r3s7 practice % touch test.txt
+c0127jenny8859@c3r3s7 practice % echo "hello" > test.txt
+c0127jenny8859@c3r3s7 practice % cat test.txt
+hello
+c0127jenny8859@c3r3s7 practice % cp test.txt test_copy.txt
+c0127jenny8859@c3r3s7 practice % mv test_copy.txt renamed.txt
+c0127jenny8859@c3r3s7 practice % ls -al
+total 32
+drwxr-xr-x  5 c0127jenny8859  c0127jenny8859   160 Jul 30 15:29 .
+drwxr-xr-x  4 c0127jenny8859  c0127jenny8859   128 Jul 30 15:29 ..
+-rw-r--r--@ 1 c0127jenny8859  c0127jenny8859  6148 Jul 30 15:29 .DS_Store
+-rw-r--r--@ 1 c0127jenny8859  c0127jenny8859     6 Jul 30 15:29 renamed.txt
+-rw-r--r--@ 1 c0127jenny8859  c0127jenny8859     6 Jul 30 15:28 test.txt
+c0127jenny8859@c3r3s7 practice % rm renamed.txt
+c0127jenny8859@c3r3s7 practice % cd ..
+c0127jenny8859@c3r3s7 dev-workstation-mission % 

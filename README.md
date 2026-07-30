@@ -232,3 +232,8 @@ For more examples and ideas, visit:
 
 $ docker stats --no-stream
 CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK I/O   PIDS
+
+## 컨테이너 종료 vs 유지 차이 관찰
+- `docker run -it ubuntu bash` 후 `exit` 하면 → 컨테이너가 즉시 종료됨 (Exited 상태)
+- `docker run -d ubuntu sleep 1000` → 백그라운드에서 계속 실행 유지됨 (Up 상태)
+- `docker exec -it <id> bash` → 이미 "실행 중인" 컨테이너 안에 추가로 접속하는 것. exec 세션에서 exit해도 컨테이너 자체는 계속 살아있음 (원래 실행 중이던 sleep 1000 프로세스가 안 죽었으니까)

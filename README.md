@@ -241,7 +241,7 @@ CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK
 - `docker run -d ubuntu sleep 1000` → 백그라운드에서 계속 실행 유지됨 (Up 상태)
 - `docker exec -it <id> bash` → 이미 "실행 중인" 컨테이너 안에 추가로 접속하는 것. exec 세션에서 exit해도 컨테이너 자체는 계속 살아있음 (원래 실행 중이던 sleep 1000 프로세스가 안 죽었으니까)
 
-## 기존 Dockerfile 기반 커스텀 이미지 제작 (요구사항 7,8)
+## 기존 Dockerfile 기반 커스텀 이미지 제작 (요구사항 7)
 
 ### 선택한 베이스 이미지
 - nginx:latest (공식 NGINX 이미지)
@@ -299,7 +299,10 @@ $ docker ps
 CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                     NAMES
 870caeafc048   my-custom-nginx   "/docker-entrypoint.…"   24 seconds ago   Up 24 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-nginx-container
 \`\`\`
+
+## 포트 매핑 및 접속 증거 (요구사항 8)
 <img width="2560" height="1440" alt="스크린샷 2026-07-30 오후 4 46 57" src="https://github.com/user-attachments/assets/4e4d75af-5e4e-46b5-9a5c-82f58633b1a7" />
+
 
 ## Docker 볼륨 영속성 검증 (요구사항 9)
 

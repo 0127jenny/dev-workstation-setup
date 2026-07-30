@@ -298,7 +298,7 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED          STATU
 \`\`\`
 <img width="2560" height="1440" alt="스크린샷 2026-07-30 오후 4 46 57" src="https://github.com/user-attachments/assets/4e4d75af-5e4e-46b5-9a5c-82f58633b1a7" />
 
-## Docker 볼륨 영속성 검증
+## Docker 볼륨 영속성 검증 (요구사항 9)
 
 \`\`\`
 $ docker volume create mydata
@@ -321,3 +321,19 @@ persisted data
 
 ### 결론
 `volume-test` 컨테이너를 완전히 삭제(`docker rm -f`)한 후에도, 같은 볼륨(`mydata`)을 연결한 새 컨테이너에서 파일을 읽을 수 있었음. 이는 데이터가 컨테이너가 아니라 볼륨에 저장되어, 컨테이너 삭제와 무관하게 유지됨을 증명함.
+
+## Git 설정 및 GitHub 연동 (요구사항 10)
+
+### Git 설정 확인
+\`\`\`
+$ git config --list
+credential.helper=osxkeychain
+user.name=채지연
+user.email=“0127jenny@gmail.com”
+init.defaultbranch=main
+\`\`\`
+
+### GitHub 연동 증거
+<img width="1227" height="893" alt="스크린샷 2026-07-30 오후 5 03 27" src="https://github.com/user-attachments/assets/b1a48202-1348-4c65-918a-8ba59cd6759b" />
+<img width="1224" height="821" alt="스크린샷 2026-07-30 오후 5 02 57" src="https://github.com/user-attachments/assets/b60086a9-fa50-4d40-a633-a4ada32c004e" />
+

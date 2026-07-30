@@ -5,7 +5,7 @@
 간단한 웹 서버를 Dockerfile로 컨테이너화하여 포트 매핑 및 볼륨 영속성을 검증한 미션.
 
 ## 실행 환경
-- OS: macOS (버전: 시스템 정보에서 확인)
+- OS: macOS Sequoia version 15.7.4
 - 터미널: VSCode 내장 터미널 (zsh)
 - Docker: Docker version 28.5.2
 - Git: git version 2.53.0

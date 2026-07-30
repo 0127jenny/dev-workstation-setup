@@ -7,9 +7,9 @@
 ## 실행 환경
 - OS: macOS (버전: 시스템 정보에서 확인)
 - 터미널: VSCode 내장 터미널 (zsh)
-- Docker: (STEP 3에서 확인한 docker --version 결과)
+- Docker: Docker version 28.5.2
 - Git: git version 2.53.0
-- 
+
 ## 터미널 조작 로그 기록 (요구사항 2)
 아래 명령어로 디렉토리/파일 생성, 복사, 이동, 삭제를 수행함.
 

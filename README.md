@@ -9,7 +9,7 @@
 - [ ] Dockerfile 작성 및 웹 서버 컨테이너화
 - [ ] Git/GitHub 연동
       
-## 터미널 조작 로그
+## 터미널 조작 로그 기록 (요구사항 2)
 아래 명령어로 디렉토리/파일 생성, 복사, 이동, 삭제를 수행함.
 
 \`\`\`
@@ -54,7 +54,7 @@ c0127jenny8859@c3r3s7 practice % rm renamed.txt
 c0127jenny8859@c3r3s7 practice % cd ..
 c0127jenny8859@c3r3s7 dev-workstation-mission % 
 
-## 권한 실습
+## 권한 실습 및 증거 기록 (요구사항 3)
 ### 파일 권한 변경
 - 변경 전: -rw-r--r--
 - 명령: chmod 644 perm_test.txt
@@ -65,7 +65,7 @@ c0127jenny8859@c3r3s7 dev-workstation-mission %
 - 명령: chmod 755 perm_dir
 - 변경 후: drwxr-xr-x
 
-## Docker 설치 점검
+## Docker 설치 및 기본 점검 (요구사항 4)
 $ docker --version
 Docker version 28.5.2, build ecc6942
 
@@ -170,7 +170,7 @@ WARNING: DOCKER_INSECURE_NO_IPTABLES_RAW is set
 $ git --version
 git version 2.53.0
 
-## Docker 기본 운영 명령
+## Docker 기본 운영 명령 수행 (요구사항 5)
 $ docker pull hello-world
 Using default tag: latest
 latest: Pulling from library/hello-world
@@ -233,12 +233,12 @@ For more examples and ideas, visit:
 $ docker stats --no-stream
 CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK I/O   PIDS
 
-## 컨테이너 종료 vs 유지 차이 관찰
+## 컨테이너 실행 연습 (요구사항 6) (컨테이너 종료 vs 유지 차이 관찰)
 - `docker run -it ubuntu bash` 후 `exit` 하면 → 컨테이너가 즉시 종료됨 (Exited 상태)
 - `docker run -d ubuntu sleep 1000` → 백그라운드에서 계속 실행 유지됨 (Up 상태)
 - `docker exec -it <id> bash` → 이미 "실행 중인" 컨테이너 안에 추가로 접속하는 것. exec 세션에서 exit해도 컨테이너 자체는 계속 살아있음 (원래 실행 중이던 sleep 1000 프로세스가 안 죽었으니까)
 
-## 커스텀 이미지 제작 (요구사항 7)
+## 기존 Dockerfile 기반 커스텀 이미지 제작 (요구사항 7,8)
 
 ### 선택한 베이스 이미지
 - nginx:latest (공식 NGINX 이미지)
@@ -337,3 +337,10 @@ init.defaultbranch=main
 <img width="1227" height="893" alt="스크린샷 2026-07-30 오후 5 03 27" src="https://github.com/user-attachments/assets/b1a48202-1348-4c65-918a-8ba59cd6759b" />
 <img width="1224" height="821" alt="스크린샷 2026-07-30 오후 5 02 57" src="https://github.com/user-attachments/assets/b60086a9-fa50-4d40-a633-a4ada32c004e" />
 
+## 트러블슈팅
+
+### 사례 1
+- 문제: docker build 시 "unable to prepare context" 에러 발생
+- 원인 가설: 터미널이 Dockerfile이 있는 폴더가 아닌 다른 위치에 있었음
+- 확인: `pwd`로 현재 위치 확인해보니 다른 폴더였음
+- 해결: `cd ~/Desktop/dev-workstation-mission`으로 이동 후 재시도하여 해결

@@ -237,3 +237,66 @@ CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK
 - `docker run -it ubuntu bash` 후 `exit` 하면 → 컨테이너가 즉시 종료됨 (Exited 상태)
 - `docker run -d ubuntu sleep 1000` → 백그라운드에서 계속 실행 유지됨 (Up 상태)
 - `docker exec -it <id> bash` → 이미 "실행 중인" 컨테이너 안에 추가로 접속하는 것. exec 세션에서 exit해도 컨테이너 자체는 계속 살아있음 (원래 실행 중이던 sleep 1000 프로세스가 안 죽었으니까)
+
+## 커스텀 이미지 제작 (요구사항 7)
+
+### 선택한 베이스 이미지
+- nginx:latest (공식 NGINX 이미지)
+
+### 커스텀 포인트
+- `COPY site/ /usr/share/nginx/html/` → 기본 NGINX 환영 페이지 대신, 직접 만든 index.html을 서빙하도록 교체함
+
+### Dockerfile 내용
+\`\`\`dockerfile
+FROM nginx:latest
+COPY site/ /usr/share/nginx/html/
+EXPOSE 80
+\`\`\`
+
+### 빌드/실행 명령 + 결과
+\`\`\`
+$ docker build -t my-custom-nginx .
+[+] Building 8.5s (7/7) FINISHED                          docker:orbstack
+ => [internal] load build definition from Dockerfile                 0.1s
+ => => transferring dockerfile: 98B                                  0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest      3.1s
+ => [internal] load .dockerignore                                    0.2s
+ => => transferring context: 2B                                      0.0s
+ => [internal] load build context                                    0.2s
+ => => transferring context: 116B                                    0.0s
+ => [1/2] FROM docker.io/library/nginx:latest@sha256:5a88c9c4547944  4.2s
+ => => resolve docker.io/library/nginx:latest@sha256:5a88c9c4547944  0.2s
+ => => sha256:db4f612f385437d11eb26620a4f1d7efb3ff4 2.29kB / 2.29kB  0.0s
+ => => sha256:4e5db4761e0ff445f7fd29aad680ad28e8abf 9.09kB / 9.09kB  0.0s
+ => => sha256:5a88c9c45479443d7be2eadc894b4ed0a98 10.23kB / 10.23kB  0.0s
+ => => sha256:062e450697faa5f02a3a74eba9864ee4d79 29.78MB / 29.78MB  0.8s
+ => => sha256:82454cdbf456a77f9ff1bb88b121c2a739e 33.33MB / 33.33MB  1.5s
+ => => sha256:3c7ab7949321f47c96fc0918f9f72e8f51bd452cd 626B / 626B  0.7s
+ => => sha256:cacfcdd01f309c65d69372716e799ea741065ac1b 955B / 955B  1.0s
+ => => sha256:b6698f04e005497a7f495c0719358d43890cb3997 403B / 403B  1.1s
+ => => extracting sha256:062e450697faa5f02a3a74eba9864ee4d79bc9cfbd  1.1s
+ => => sha256:2bedaf25031a24fb70b9dc2d56cb17139186d 1.21kB / 1.21kB  1.3s
+ => => sha256:d26f27cc8c41e321394cb3c9a80915d90d5f1 1.40kB / 1.40kB  1.8s
+ => => extracting sha256:82454cdbf456a77f9ff1bb88b121c2a739e38c30ea  0.7s
+ => => extracting sha256:3c7ab7949321f47c96fc0918f9f72e8f51bd452cde  0.0s
+ => => extracting sha256:cacfcdd01f309c65d69372716e799ea741065ac1b1  0.0s
+ => => extracting sha256:b6698f04e005497a7f495c0719358d43890cb3997a  0.0s
+ => => extracting sha256:2bedaf25031a24fb70b9dc2d56cb17139186d1ae5f  0.0s
+ => => extracting sha256:d26f27cc8c41e321394cb3c9a80915d90d5f1f1d3c  0.0s
+ => [2/2] COPY site/ /usr/share/nginx/html/                          0.4s
+ => exporting to image                                               0.2s
+ => => exporting layers                                              0.1s
+ => => writing image sha256:4254ccebb3d95c1fb8b50f633ddff6913fc0d6f  0.0s
+ => => naming to docker.io/library/my-custom-nginx  
+
+$ docker run -d -p 8080:80 --name my-nginx-container my-custom-nginx
+870caeafc048eeba393a7dc370698a48e16323f2d52bdb153a4394ace07390b3
+
+$ docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+870caeafc048   my-custom-nginx   "/docker-entrypoint.…"   24 seconds ago   Up 24 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-nginx-container
+\`\`\`
+<img width="2560" height="1440" alt="스크린샷 2026-07-30 오후 4 46 57" src="https://github.com/user-attachments/assets/4e4d75af-5e4e-46b5-9a5c-82f58633b1a7" />
+
+## 포트 매핑 접속 증거 (요구사항 8)
+(브라우저 스크린샷 첨부 - http://localhost:8080 주소창 보이게, 그리고 화면에 "Hello from my custom NGINX container!" 나온 것 확인)

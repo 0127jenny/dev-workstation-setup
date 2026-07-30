@@ -53,6 +53,9 @@ drwxr-xr-x  4 c0127jenny8859  c0127jenny8859   128 Jul 30 15:29 ..
 c0127jenny8859@c3r3s7 practice % rm renamed.txt
 c0127jenny8859@c3r3s7 practice % cd ..
 c0127jenny8859@c3r3s7 dev-workstation-mission % 
+![Uploading 스크린샷 2026-07-30 오후 3.31.56.png…]()
+<img width="975" height="949" alt="스크린샷 2026-07-30 오후 3 31 04" src="https://github.com/user-attachments/assets/6914063e-25ff-4547-9d64-9f9b8afd3420" />
+<img width="948" height="467" alt="스크린샷 2026-07-30 오후 3 30 16" src="https://github.com/user-attachments/assets/3115289a-80c5-4048-ab8b-f1d03b576152" />
 
 ## 권한 실습 및 증거 기록 (요구사항 3)
 ### 파일 권한 변경

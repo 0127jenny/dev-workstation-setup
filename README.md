@@ -1,14 +1,15 @@
 # Dev Workstation Setup
 
-이 저장소는 개발 워크스테이션 구축 미션 결과물입니다.
-터미널, Docker(OrbStack), Git/GitHub 환경을 세팅하고 검증합니다.
+## 프로젝트 개요
+터미널, Docker(OrbStack), Git/GitHub을 활용해 재현 가능한 개발 워크스테이션을 구축하고,
+간단한 웹 서버를 Dockerfile로 컨테이너화하여 포트 매핑 및 볼륨 영속성을 검증한 미션.
 
-## 진행 상황
-- [ ] 터미널 작업 디렉토리 설정
-- [ ] Docker 설치 확인
-- [ ] Dockerfile 작성 및 웹 서버 컨테이너화
-- [ ] Git/GitHub 연동
-      
+## 실행 환경
+- OS: macOS (버전: 시스템 정보에서 확인)
+- 터미널: VSCode 내장 터미널 (zsh)
+- Docker: (STEP 3에서 확인한 docker --version 결과)
+- Git: git version 2.53.0
+- 
 ## 터미널 조작 로그 기록 (요구사항 2)
 아래 명령어로 디렉토리/파일 생성, 복사, 이동, 삭제를 수행함.
 

@@ -241,7 +241,7 @@ CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK
 - `docker run -d ubuntu sleep 1000` → 백그라운드에서 계속 실행 유지됨 (Up 상태)
 - `docker exec -it <id> bash` → 이미 "실행 중인" 컨테이너 안에 추가로 접속하는 것. exec 세션에서 exit해도 컨테이너 자체는 계속 살아있음 (원래 실행 중이던 sleep 1000 프로세스가 안 죽었으니까)
 
-## 기존 Dockerfile 기반 커스텀 이미지 제작 (요구사항 7)
+## 기존 Dockerfile 기반 커스텀 이미지 제작 (요구사항 7-A)
 
 ### 선택한 베이스 이미지
 - nginx:latest (공식 NGINX 이미지)
